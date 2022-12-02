@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cg546hrfgnihx"]
+
+[ext_resource type="Script" path="res://hero/hero.gd" id="1_jlhoe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_77ui2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oow36"]
+
+[node name="Hero" type="CharacterBody2D" groups=["hero"]]
+motion_mode = 1
+script = ExtResource("1_jlhoe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_77ui2")
+
+[node name="PresenseNotifier" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PresenseNotifier"]
+shape = SubResource("CircleShape2D_oow36")

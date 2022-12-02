@@ -1,0 +1,1 @@
+ffmpeg -y -i "footage.avi" -vf "crop=trunc(iw/2)*2:trunc(ih/2)*2" "footage.mp4"

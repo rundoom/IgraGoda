@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://eefj017hrwyv"]
+
+[ext_resource type="Script" path="res://enemy/ranged/ranged_enemy.gd" id="1_stiub"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5l8hc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sl0kb"]
+radius = 199.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7rvde"]
+radius = 154.081
+
+[node name="RangedEnemy" type="CharacterBody2D" groups=["enemy", "ranged"]]
+motion_mode = 1
+safe_margin = 20.0
+script = ExtResource("1_stiub")
+SPEED = 300
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5l8hc")
+debug_color = Color(0.321569, 0.607843, 0.435294, 0.419608)
+
+[node name="RangedZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangedZone"]
+shape = SubResource("CircleShape2D_sl0kb")
+debug_color = Color(0.392157, 0.611765, 0, 0.0862745)
+
+[node name="DangerZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DangerZone"]
+shape = SubResource("CircleShape2D_7rvde")
+debug_color = Color(0.392157, 0.611765, 0, 0.0862745)
+
+[connection signal="area_entered" from="RangedZone" to="." method="_on_ranged_zone_area_entered"]
+[connection signal="area_exited" from="RangedZone" to="." method="_on_ranged_zone_area_exited"]
+[connection signal="area_entered" from="DangerZone" to="." method="_on_danger_zone_area_entered"]
+[connection signal="area_exited" from="DangerZone" to="." method="_on_danger_zone_area_exited"]

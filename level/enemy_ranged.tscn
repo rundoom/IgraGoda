@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2yifjscjwm8n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uoqw6"]
+
+[node name="EnemyRanged" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_uoqw6")
+debug_color = Color(0.333333, 0.603922, 0.419608, 0.419608)
