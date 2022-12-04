@@ -12,6 +12,7 @@ script = ExtResource("1_jlhoe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_77ui2")
+debug_color = Color(0.705882, 0, 0.235294, 1)
 
 [node name="PresenseNotifier" type="Area2D" parent="."]
 collision_layer = 8

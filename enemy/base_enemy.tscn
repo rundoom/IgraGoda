@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://v1mgtxygkpp2"]
+
+[ext_resource type="Script" path="res://enemy/enemy.gd" id="1_k52v5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_teduf"]
+
+[node name="BaseEnemy" type="CharacterBody2D"]
+motion_mode = 1
+safe_margin = 16.0
+script = ExtResource("1_k52v5")
+SPEED = 200
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_teduf")
+debug_color = Color(0.835294, 0, 0.933333, 0.862745)
+
+[node name="HeroDetector" type="RayCast2D" parent="."]
+enabled = false
+target_position = Vector2(1920, 0)
+collision_mask = 8
+collide_with_areas = true
+
+[node name="DetectionTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="Navigator" type="NavigationAgent2D" parent="."]
+path_desired_distance = 20.0
+avoidance_enabled = true
+radius = 25.0
+neighbor_distance = 50.0
+max_neighbors = 5
+time_horizon = 5.0
+max_speed = 100.0
+
+[node name="State" type="Label" parent="."]
+offset_left = -18.0
+offset_top = -34.0
+offset_right = 22.0
+offset_bottom = -11.0
+
+[node name="Path" type="Line2D" parent="."]
+width = 2.0
+
+[connection signal="timeout" from="DetectionTimer" to="." method="_on_detection_timer_timeout"]
+[connection signal="velocity_computed" from="Navigator" to="." method="_on_navigator_velocity_computed"]
