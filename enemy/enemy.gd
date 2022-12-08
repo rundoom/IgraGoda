@@ -12,6 +12,17 @@ var BASE_SAFE_MARGIN := safe_margin
 
 enum State {IDLE, STALK, SEEK, PANIC, RETREAT, ATTACK}
 
+class IdleState extends MachineState:
+	func enter():
+		pass
+	
+	func exit():
+		pass
+	
+	func process():
+		pass
+	
+#var testState = MachineState.new("IDLE")
 
 var state_map = {
 	State.IDLE: idle,

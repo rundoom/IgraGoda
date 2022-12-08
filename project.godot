@@ -9,13 +9,25 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "Node2D",
+"class": &"BasicRanged",
+"language": &"GDScript",
+"path": "res://hero/weapon/base_ranged.gd"
+}, {
 "base": "CharacterBody2D",
 "class": &"Enemy",
 "language": &"GDScript",
 "path": "res://enemy/enemy.gd"
+}, {
+"base": "Object",
+"class": &"MachineState",
+"language": &"GDScript",
+"path": "res://core/state.gd"
 }]
 _global_script_class_icons={
-"Enemy": ""
+"BasicRanged": "",
+"Enemy": "",
+"MachineState": ""
 }
 
 [application]
